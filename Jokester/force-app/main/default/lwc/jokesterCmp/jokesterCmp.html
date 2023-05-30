@@ -1,0 +1,35 @@
+<template>
+    <div class="background-image"></div>
+    
+    <div class="slds-grid slds-wrap slds-p-top_xx-large">
+    <div class="slds-size_12-of-12">
+    <lightning-layout style="background-color: white;">
+        <lightning-radio-group
+            label="Select Category to get a Joke"
+            options={radioOptions}
+            value={selectedValue}
+            onchange={handleSelect}
+            label-class="white-text"
+            class="radio-container slds-align_absolute-center"
+        ></lightning-radio-group>
+    </lightning-layout>
+    <lightning-layout style="background-color: white;">
+        <template if:true={showTextBox}>
+            <lightning-layout class="slds-align_absolute-center">
+                <lightning-input variant="label-hidden" value={texttocheck} onchange={assignData}></lightning-input>
+                <lightning-button label="Search" onclick={handleOtherInputChange}></lightning-button>
+            </lightning-layout>
+        </template>
+        <template if:true={responseReturned}>
+            <p class="slds-m-left_medium slds-m-right_medium slds-align_absolute-center">{responseReturned}</p> 
+        </template>
+    </lightning-layout><br/>
+    <lightning-layout style="background-color: white;" class="slds-align_absolute-center">
+        <template if:true={showStars}>
+                <lightning-input type="" label="Please Rate this Joke From 1 to 5" value={starRating} onchange={handleRatingChange}></lightning-input>
+                <lightning-button class="slds-m-top_x-large" label="Submit" onclick={handleRating}></lightning-button>
+        </template>
+    </lightning-layout>
+    </div>
+    </div>
+    </template>
